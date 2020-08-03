@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>直播测试</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/vcp-player.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<!-- 直播 -->
+			<div class="live_video_container" :style="{ height: videoHeight + 'px' }"><div id="live_video"></div></div>
+			<!-- 人数统计 -->
+			<div class="total_on_line_man" :style="{ top: videoHeight + 'px' }">
+				<span></span>
+				<span>在线听课学生</span>
+				<span>300</span>
+			</div>
+			<div :style="{ height: (videoHeight + 40) + 'px' }"></div>
+			<!-- 聊天 消息列表-->
+			<div class="chat-msg-list">
+				
+			</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div> 
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+			<div>10</div>
+			<div>11</div>
+			<div>12</div>
+			<div>13</div>
+			<div>14</div>
+			<div>15</div>
+			<div>16</div>
+			<div>17</div>
+			<div>18</div>
+			<div>19</div>
+			<div>20</div>
+			<div>21</div>
+			<div>22</div>
+			<div>23</div>
+			<div>24</div>
+			<div>25</div>
+			<div>26</div>
+			<div>27</div>
+			<div>28</div>
+			<div>29</div>
+			<div>30</div> 
+			<div>1</div>
+			<div>2</div>
+			<div>3</div> 
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+			<div>10</div>
+			<div>11</div>
+			<div>12</div>
+			<div>13</div>
+			<div>14</div>
+			<div>15</div>
+			<div>16</div>
+			<div>17</div>
+			<div>18</div>
+			<div>19</div>
+			<div>20</div>
+			<div>21</div>
+			<div>22</div>
+			<div>23</div>
+			<div>24</div>
+			<div>25</div>
+			<div>26</div>
+			<div>27</div>
+			<div>28</div>
+			<div>29</div>
+			<div>30</div>
+			<div style="height: 1.1rem;"></div> 
+			<div class="send-msg">
+				<input type="text" v-model="msg" placeholder="请输入关键字">
+				<span @click="handleSend">发送</span>
+			</div>
+			<ul>
+				<li v-for="item in chatMsgList" :key="item.msg_id">
+					<span>姓名：</span>
+					<span>{{ item.from_username }}</span>
+					<span>|</span>
+					<span>内容：</span>
+					<span>{{ item.content.msg_body.text }}</span>
+				</li>
+			</ul>
+		</div>
+		<!-- 引入直播SDK -->
+		<script src="js/libs/TcPlayer-2.3.2.js" charset="utf-8"></script>
+		<!-- 引入极光IM -->
+		<script src="js/libs/jmessage-sdk-web.2.6.0.min.js"></script>
+		<!-- 引入Vue -->
+		<script src="js/libs/vue.min.js"></script>
+		<!-- 处理聊天室 -->
+		<script src="js/libs/md5.js"></script>
+		<script src="js/IM.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					livePlayer: null, // 腾讯云直播实例
+					videoHeight: 180, // 直播视频高度
+					msg: '',
+					chatMsgList: []
+				},
+				methods: {
+					// 发送聊天消息
+					handleSend() {
+						this.$IM.sendChatroomMsg({
+							target_rid: '23606744',
+							content: this.msg
+						}, (res) => {
+							console.log('聊天消息发送成功：', res)
+							this.chatMsgList.push({
+								msg_id: res.msg_id,
+								from_username: 'test_1',
+								content: {
+									msg_body: {
+										text: this.msg
+									}
+								}
+							})
+							this.msg = ''
+						})
+					},
+					// 获取直播信息并播放
+					getLiveInfoPlay () {
+						console.log(document.documentElement.clientWidth, this.videoHeight)
+						this.livePlayer = new TcPlayer('live_video', {  
+							"flv": "http://achao.bajiaostar.com/live/123123.flv", //请替换成实际可用的播放地址
+							"h5_flv": true,
+							"autoplay": true, //iOS 下 safari 浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+							"width": document.documentElement.clientWidth, //视频的显示宽度，请尽量使用视频分辨率宽度,
+							"height": this.videoHeight,
+							"controls": "system", // default 显示默认控件，none 不显示控件，system 移动端显示系统控件。
+							"listener": (e) => { 
+								if (e.type !== 'timeupdate') console.log(e)
+								if (e.type === 'fullscreen') {
+									if (e.detail.isFullscreen) {
+										// 全屏
+										console.log('全屏')
+										// #ifdef APP-PLUS
+										plus.screen.lockOrientation('landscape-primary') // 横屏正方向
+										// #endif
+									} else {
+										// 非全屏
+										console.log('非全屏')
+										// #ifdef APP-PLUS
+										plus.screen.lockOrientation('portrait-primary') //锁定竖屏
+										// #endif
+									}
+								}
+							}
+						})
+					}
+				},
+				mounted () {
+					this.videoHeight = parseInt(320 * (document.documentElement.clientWidth / 640)) // 180
+					this.getLiveInfoPlay()
+					this.$IM.onRoomMsg((res) => {
+						console.log(res)
+						this.chatMsgList.push(res)
+					})
+				},
+				beforeDestroy() {
+					console.log('退出直播')
+				}
+			})
+			// ios 端用 system, // 安卓端用 default
+			// var livePlayer = new TcPlayer('live_video', {
+			// 	"m3u8": "http://achao.bajiaostar.com/live/123123.m3u8", //请替换成实际可用的播放地址
+			// 	"autoplay": true, //iOS 下 safari 浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+			// 	"width": document.documentElement.clientWidth, //视频的显示宽度，请尽量使用视频分辨率宽度,
+			// 	"height": 180,
+			// 	"controls": "system", // default 显示默认控件，none 不显示控件，system 移动端显示系统控件。
+			// 	"live": true, 
+			// 	"listener": (e) => {
+			// 		if (e.type !== 'timeupdate') console.log(e)
+			// 		if (e.type === 'fullscreen') {
+			// 			if (e.detail.isFullscreen) {
+			// 				// 全屏
+			// 				console.log('全屏')
+			// 				// #ifdef APP-PLUS
+			// 				plus.screen.lockOrientation('landscape-primary') // 横屏正方向
+			// 				// #endif
+			// 			} else {
+			// 				// 非全屏
+			// 				console.log('非全屏')
+			// 				// #ifdef APP-PLUS
+			// 				plus.screen.lockOrientation('portrait-primary') //锁定竖屏
+			// 				// #endif
+			// 			}
+			// 		}
+			// 	}
+			// })
+		</script>
+	</body>
+</html>

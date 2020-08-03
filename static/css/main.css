@@ -1,0 +1,54 @@
+.swiper-item image {
+	width: 100%;
+	display: block;
+	height: 100%;
+	margin: 0;
+	pointer-events: none;
+}
+
+.card-swiper {
+	height: 300rpx !important;
+}
+
+.card-swiper swiper-item {
+	width: 610rpx !important;
+	left: 70rpx;
+	box-sizing: border-box;
+	padding: 30rpx 0rpx 20rpx;
+	overflow: initial;
+}
+
+.card-swiper swiper-item .swiper-item {
+	width: 100%;
+	display: block;
+	height: 100%;
+	border-radius: 10rpx;
+	transform: scale(0.9);
+	transition: all 0.2s ease-in 0s;
+	overflow: hidden;
+	box-shadow: 0 3px 6px 0 rgba(47,105,151,0.15), 0 5px 10px 0 rgba(50,120,166, .07);
+}
+
+.card-swiper swiper-item.cur .swiper-item {
+	transform: none;
+	transition: all 0.2s ease-in 0s;
+}
+
+/* 没选中 */
+swiper.square-dot .wx-swiper-dot,
+swiper.square-dot .a-swiper-dot,
+swiper.square-dot .uni-swiper-dot {
+	background-color: var(--white);
+	opacity: 0.4;
+	width: 12rpx;
+	height: 12rpx;
+	border-radius: 20rpx;
+	margin: 20rpx 8rpx !important;
+}
+
+/* 选中 */
+swiper.square-dot .wx-swiper-dot.wx-swiper-dot-active,
+swiper.square-dot .a-swiper-dot.a-swiper-dot-active,
+swiper.square-dot .uni-swiper-dot.uni-swiper-dot-active {
+	opacity: 1;
+}

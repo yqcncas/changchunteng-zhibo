@@ -1,0 +1,130 @@
+<template>
+	<div>
+		<div v-if="drag" class="wrap tab-bar-scroll">
+			<scroller class="scroll" scrollDirection="horizontal" showScrollbar="false">
+				<div 
+					class="tab-bar-item tab-bar-scroll-width"
+					v-for="(tabBar, t) in tabBars"
+					:key="t"
+					:ref="tabBar.id + t"
+					@click="change(t)"
+				>
+					<text class="tab-bar-title" :class="[tabIndex === t ? 'active' : '']">{{
+						tabBar.name
+					}}</text>
+				</div>
+			</scroller>
+		</div>
+		<div v-else class="wrap tab-bar">
+			<div
+				class="tab-bar-item"
+				v-for="(tabBar, t) in tabBars"
+				:key="t"
+				:ref="tabBar.id + t"
+				@click="change(t)"
+			>
+				<text class="tab-bar-title" :class="[tabIndex === t ? 'active' : '']">{{
+					tabBar.name
+				}}</text>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+const dom = weex.requireModule('dom');
+let windowWidth = 350 // 默认屏幕宽度
+export default {
+	props: {
+		drag: {
+			type: Boolean,
+			default: true
+		},
+		tabBars: {
+			type: Array,
+			default: function(e) {
+				return [];
+			}
+		},
+		tabIndex: {
+			type: Number,
+			default: 0
+		}
+	},
+	watch:{
+		tabIndex(newVal){
+			this.change(newVal)
+		}
+	},
+	methods: {
+		async change(index, e) {
+			this.$emit('tabChange', { detail: { current: index }})
+			const el = this.$refs[this.tabBars[index].id + index][0]
+			let elSize = await this.getElSize(el)
+			//获取可滑动总宽度
+			let currentWidth = (index * elSize.width) + elSize.width
+			// 如果越过中心点，放置在中心点
+			if (currentWidth - elSize.width / 2 >= windowWidth / 2) {
+				return dom.scrollToElement(el, { offset: -(elSize.width*2) })
+			} else {
+				if (index === 0) return dom.scrollToElement(el)
+				if (index === 1) return dom.scrollToElement(el, { offset: -elSize.width })
+			} 
+			
+		},
+		getElSize(el) { //得到元素的size
+		    return new Promise((res, rej) => {
+		        const result = dom.getComponentRect(el, option => {
+		            res(option.size);
+		        })
+		    })
+		}
+	},
+	created() {
+		windowWidth = uni.getSystemInfoSync().windowWidth // 真实屏幕宽度
+	}
+};
+</script>
+<style>
+.wrap {
+	height: 90rpx;
+	width: 750rpx;
+	flex-direction: row;
+	font-size: 30rpx;
+	/* border-bottom-width: 1rpx; */
+	border-color: #eee;
+}
+.tab-bar {
+	justify-content: space-between;
+	padding-left: 30rpx;
+	padding-right: 30rpx;
+}
+.scroll {
+	height: 90rpx;
+	width: 750rpx;
+	flex-direction: row;
+}
+.tab-bar-item {
+	height: 90rpx;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.tab-bar-scroll-width {
+	width: 150rpx;
+}
+.tab-bar-title {
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 30rpx;
+	color: #9B9B9B;
+	border-bottom-width: 6rpx;
+	border-color: transparent;
+}
+.active {
+	color: #8987DF;
+	font-weight: bold;
+	border-color: #8987DF;
+	font-size: 17px;
+}
+</style>

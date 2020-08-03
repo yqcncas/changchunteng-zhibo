@@ -1,0 +1,464 @@
+<template>
+	<div class="container">
+		<!-- uni 官方顶部选项卡组件 --> 
+		<!-- #ifdef APP-PLUS -->
+		<uni-tab-bar :drag="true" :tab-bars="tabBars" :tab-index="tabCurrentIndex" @tabChange="tabChange"></uni-tab-bar>
+		<!-- #endif -->
+		<!-- 切换 -->
+		<!-- weex 很垃圾！！！！ -->
+		<swiper :style="{ height: swiperHeight }" :current="tabCurrentIndex" @change="tabChange">
+			<swiper-item v-for="(parentItem, parentIndex) in courseList" :key="parentItem.courseId">
+				<list> 
+					<cell>
+						<div style="height: 30rpx;"></div>
+						<!-- 轮播图 -->
+						<swiper :indicator-dots="true" 
+								:circular="true"
+								class="card-swiper"
+								interval="5000"  
+								duration="500"
+								:autoplay="true">
+							<swiper-item class="card-swiper-item" v-for="(item,index) in sliderList" :key="item.id">
+								<view class="swiper-item">
+									<image @click="handleOpenActivity(item.actId)" class="swiper-item-image" mode="aspectFill" :src="item.pic" lazy-load />
+								</view>
+							</swiper-item>
+						</swiper>
+						<!-- 直播，录播 --> 
+						<view class="course-type">
+							<view class="course-type-item" @click="handleSelectType(1)">
+								<text :class="['course-type-item-text', parentItem.selectType === 1 ? 'course-type-item-active' : '']">{{ handleExist ? '直播课' : '辅导课' }}</text>
+								<text :class="['course-type-item-bottom', parentItem.selectType === 1 ? 'course-type-item-bottom_active' : '']"></text>
+							</view>
+							<view class="course-type-item" @click="handleSelectType(2)">
+								<text :class="['course-type-item-text', parentItem.selectType === 2 ? 'course-type-item-active' : '']">专题课</text>
+								<text :class="['course-type-item-bottom', parentItem.selectType === 2 ? 'course-type-item-bottom_active' : '']"></text>	
+							</view>
+						</view>
+						<!-- 相关课程 -->
+						<view class="course-list">
+							<!-- 直播课 -->
+							<view v-if="parentItem.selectType === 1">
+								<view class="course-item" v-for="item in parentItem.courseList.liveList" :key="item.courseId" @click="handleOpenCourseDetail(item.courseId)">
+									<!-- 课程名称 -->
+									<view class="course-name">
+										<image class="course-name-bg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAAA8CAYAAACgsw7vAAAAAXNSR0IArs4c6QAAA8pJREFUeAHtnT1M20AYhu9zfgRUZWFC/UlgQerEglS6MtMRtVMrsUGUCkoCVRFCiBYCFFQU2FqJqRVjmZlZmZBYINBWdGFBBdpA+HqhCrJMnPicIT77zeKf+w697/Ny57PiJJSZ2WeBV6AIkBDfjEA5hllBROcRIV4h+OD9M0wPvWnLIfgABU8kduPtsYWiZQQfoOCZjMG+PsoXLYcD5DvQVknQl/RobLMEASO+RMLHW7mKP4k0iNdmixjxZhp+3SdjYmgodmS2hxFvpuHDfXn7th1vf5i1WkPwViI+OpahM4XEgFzQFay2ELyViJ+OSXxKpeJb5Swh+HJUfHGOjpvuhMfsrCB4OzKanzcMMZpI3D+2s4Hg7chofF7es2+NpGOfK1nA7VwlOhq2yQVdQRg8UFzYVZKPEV+JjpZtnE2n27arSceIr0ZIq3Y6ami6O+FEMka8E0qa1BjEw8lky4kTuRjxTihpUCOv6ZupsfhXp1Ix4p2S8nZdnikyqCIRI16Flkdr5WhfSI/e21WRhxGvQsuLtUS5cDQ0rSoNwasS81i9ISg5PPzgXFUWglcl5qF6+QzdRmostuFGEoJ3Q80DfeR1/TzCIulWCoJ3S67+/a4fk3YrA8G7JVfHfubHpN3KQPBuyWneD8FrGCCz6MjtHYzUIh3B10Kvvn3Hl2b2424lIHi35Orcj5kbL0gsu5WB4N2S80A/OeX3ZjKHT91IQfBuqHmpD199XFz83qgqCcGrEvNaPXP8Ml8YV5WF4FWJebBeXu9HMpmfHSrSELwKLe/WRokvVlTkIXgVWh6ulaO+Z25u/7lTiQjeKSkN6rhAH5aXj5udSEXwTihpU8Otf85OppzIRfBOKGlVQwk55XdWk4zgqxHSrF1e60OiQKtyK78Iw/6F4O3ZaNvCgrvnZw/6KxlA8JXoaNwmPzg3m83+aLGzgODtyGh/nlvOTi9n7WwgeDsyfjjPon9+PtddzgqCL0fFJ+eKCzwuiNX1dbngs7wQvAWI3w5l+J25vcOE1ReCtxLx4zFfTS0t5VrN1hC8mYZP9+UKvzn/Vyya7SF4Mw0/7zM/y2QOekoWEXyJRAC2xFcrcqEXLVpF8AEIvGTR/Fg24TdpSliCsf3/mTt+hBEfjLxvXMrbu+vHssOnv3+9lKu+4rs5TTetpp3p908qvstjKsWuRgSMqXfda6EIdclvQ9zRSDek1kjgeqqfnHy8E4pGuuRvU63V+PfQXRMCt6bxibdbL8xTP6Z6TZJUlHlrcYepX5GgpuW3gi/6wNSvaZoKsv8B52XZjSl7aJYAAAAASUVORK5CYII="></image>
+										<text class="course-name-text">{{ item.courseName }}</text>
+									</view>
+									<!-- 价格 -->
+									<view class="price"><text class="price-text">¥{{ item.price }}</text></view>
+									<!-- 课程标题 -->
+									<text class="course-title">{{ item.name }}</text>
+									<text class="course-time">{{ item.classTime }}</text>
+									<!-- 课程难度 -->
+									<view class="course-level">
+										<text class="course-level-title">难度</text>
+										<image v-for="item in item.level" class="course-level-star" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAlFJREFUSA2dVU1LVUEYfuZeTdPyA+5O4kpUcMFbGiFEi36AVgvtmrRIilaS6xaB4V/QTdFeCP0BBS2Cyo8igoI+NlJguFDMrEVp9+2ZOdfDnDtHZ+4dGM7M+z7P887HO+8Bamgyhz55jP4aKMiEgmUeI8QukrHAQOOhPBUClAdoQQ5viC0YvGAVv3FG3cCGjx+2gxxKsbhWVOhCK276xCOoB8UzP8xjWaJoMQEVfMUf9Knr2EzYqyb+HWQw5IhrEYU8mjBWpedMD7wDrv5QZfW9DlMbBCsocxclbKX6aYwDyH1KHedVNqObowLJRX7PEXNxP3LFvkzsa44/8PuJnBWmwJqa4AGyKZnFMTTiHsdn2fMMmdN29vqa4CfZqwz2ngKTDRSfomGsPrUUlkIbrW3U1Cnd7L/kFI1gk6Cc4SVNcTvvgknhwI/UvpthBuhMGGSQV+FcL/It/mGA2p/NEXGgn/5lBnnipfoAgpf4i0tm4cTGd2Dqyhau0jbHLj6dVL/gKRd6RY3i+57fSUc+riPImhTr3gMFftd5LEWufM3GxzuwjO0cd1jz0OFRnofDcwNkcarOAE1MlqicW0tyAwhOW/7ahlmX6wYA0gtbSChdv6paIgAvOEt/TxUmmgrzA3jEPs0c2696FkwFtgQSAbBj6kje8uuE/WWEyzivhnCbfQK7/PELZlICddHXafOTARpNJXxWAWxT4CEJkXDJpK5xqWv4ooZxJw4E/IgceI6G5B/OfQf6B9+JCyR800+9EuzAD4/lBKvnSS7vhbqFbRv8HzgBjfYGEr3GAAAAAElFTkSuQmCC" mode="aspectFill"></image>
+									</view>
+									<!-- 讲师 -->
+									<view class="teacher">
+										<view class="teacher-left">
+									 		<image class="teacher-avatar" :src="baseURL + item.avatar" mode="aspectFill"></image>
+											<text class="teacher-name">{{ item.teacherName }}</text> 
+										</view> 
+										<text class="course-collection">共{{ item.childNum }}讲</text>
+									</view>
+								</view>
+							</view>
+							<!-- 录播课 -->
+							<view v-if="parentItem.selectType === 2"> 
+								<view class="course-item" v-for="item in parentItem.courseList.specialList" :key="item.courseId" @click="handleOpenCourseDetail(item.courseId)">
+									<!-- 课程名称 -->
+									<view class="course-name">
+										<image class="course-name-bg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAAA8CAYAAACgsw7vAAAAAXNSR0IArs4c6QAAA8pJREFUeAHtnT1M20AYhu9zfgRUZWFC/UlgQerEglS6MtMRtVMrsUGUCkoCVRFCiBYCFFQU2FqJqRVjmZlZmZBYINBWdGFBBdpA+HqhCrJMnPicIT77zeKf+w697/Ny57PiJJSZ2WeBV6AIkBDfjEA5hllBROcRIV4h+OD9M0wPvWnLIfgABU8kduPtsYWiZQQfoOCZjMG+PsoXLYcD5DvQVknQl/RobLMEASO+RMLHW7mKP4k0iNdmixjxZhp+3SdjYmgodmS2hxFvpuHDfXn7th1vf5i1WkPwViI+OpahM4XEgFzQFay2ELyViJ+OSXxKpeJb5Swh+HJUfHGOjpvuhMfsrCB4OzKanzcMMZpI3D+2s4Hg7chofF7es2+NpGOfK1nA7VwlOhq2yQVdQRg8UFzYVZKPEV+JjpZtnE2n27arSceIr0ZIq3Y6ami6O+FEMka8E0qa1BjEw8lky4kTuRjxTihpUCOv6ZupsfhXp1Ix4p2S8nZdnikyqCIRI16Flkdr5WhfSI/e21WRhxGvQsuLtUS5cDQ0rSoNwasS81i9ISg5PPzgXFUWglcl5qF6+QzdRmostuFGEoJ3Q80DfeR1/TzCIulWCoJ3S67+/a4fk3YrA8G7JVfHfubHpN3KQPBuyWneD8FrGCCz6MjtHYzUIh3B10Kvvn3Hl2b2424lIHi35Orcj5kbL0gsu5WB4N2S80A/OeX3ZjKHT91IQfBuqHmpD199XFz83qgqCcGrEvNaPXP8Ml8YV5WF4FWJebBeXu9HMpmfHSrSELwKLe/WRokvVlTkIXgVWh6ulaO+Z25u/7lTiQjeKSkN6rhAH5aXj5udSEXwTihpU8Otf85OppzIRfBOKGlVQwk55XdWk4zgqxHSrF1e60OiQKtyK78Iw/6F4O3ZaNvCgrvnZw/6KxlA8JXoaNwmPzg3m83+aLGzgODtyGh/nlvOTi9n7WwgeDsyfjjPon9+PtddzgqCL0fFJ+eKCzwuiNX1dbngs7wQvAWI3w5l+J25vcOE1ReCtxLx4zFfTS0t5VrN1hC8mYZP9+UKvzn/Vyya7SF4Mw0/7zM/y2QOekoWEXyJRAC2xFcrcqEXLVpF8AEIvGTR/Fg24TdpSliCsf3/mTt+hBEfjLxvXMrbu+vHssOnv3+9lKu+4rs5TTetpp3p908qvstjKsWuRgSMqXfda6EIdclvQ9zRSDek1kjgeqqfnHy8E4pGuuRvU63V+PfQXRMCt6bxibdbL8xTP6Z6TZJUlHlrcYepX5GgpuW3gi/6wNSvaZoKsv8B52XZjSl7aJYAAAAASUVORK5CYII="></image>
+										<text class="course-name-text">{{ item.courseName }}</text>
+									</view>
+									<!-- 价格 -->
+									<view class="price"><text class="price-text">¥{{ item.price }}</text></view>
+									<!-- 课程标题 -->
+									<text class="course-title">{{ item.name }}</text>
+									<text class="course-time">{{ item.classTime }}</text>
+									<!-- 课程难度 -->
+									<view class="course-level">
+										<text class="course-level-title">难度</text>
+										<image v-for="item in item.level" class="course-level-star" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAlFJREFUSA2dVU1LVUEYfuZeTdPyA+5O4kpUcMFbGiFEi36AVgvtmrRIilaS6xaB4V/QTdFeCP0BBS2Cyo8igoI+NlJguFDMrEVp9+2ZOdfDnDtHZ+4dGM7M+z7P887HO+8Bamgyhz55jP4aKMiEgmUeI8QukrHAQOOhPBUClAdoQQ5viC0YvGAVv3FG3cCGjx+2gxxKsbhWVOhCK276xCOoB8UzP8xjWaJoMQEVfMUf9Knr2EzYqyb+HWQw5IhrEYU8mjBWpedMD7wDrv5QZfW9DlMbBCsocxclbKX6aYwDyH1KHedVNqObowLJRX7PEXNxP3LFvkzsa44/8PuJnBWmwJqa4AGyKZnFMTTiHsdn2fMMmdN29vqa4CfZqwz2ngKTDRSfomGsPrUUlkIbrW3U1Cnd7L/kFI1gk6Cc4SVNcTvvgknhwI/UvpthBuhMGGSQV+FcL/It/mGA2p/NEXGgn/5lBnnipfoAgpf4i0tm4cTGd2Dqyhau0jbHLj6dVL/gKRd6RY3i+57fSUc+riPImhTr3gMFftd5LEWufM3GxzuwjO0cd1jz0OFRnofDcwNkcarOAE1MlqicW0tyAwhOW/7ahlmX6wYA0gtbSChdv6paIgAvOEt/TxUmmgrzA3jEPs0c2696FkwFtgQSAbBj6kje8uuE/WWEyzivhnCbfQK7/PELZlICddHXafOTARpNJXxWAWxT4CEJkXDJpK5xqWv4ooZxJw4E/IgceI6G5B/OfQf6B9+JCyR800+9EuzAD4/lBKvnSS7vhbqFbRv8HzgBjfYGEr3GAAAAAElFTkSuQmCC" mode="aspectFill"></image>
+									</view>
+									<!-- 讲师 -->
+									<view class="teacher">
+										<view class="teacher-left">
+											<image class="teacher-avatar" :src="`${baseURL}${item.avatar}`" mode="aspectFill"></image>
+											<text class="teacher-name">{{ item.teacherName }}</text>
+										</view>
+										<text class="course-collection">共{{ item.childNum }}讲</text>
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="tip-no-more" v-if="!parentItem.hasFlag">
+							<text class="tip-no-more-text">已经到底啦~</text>
+						</view>
+					</cell> 
+					<loading @loading="getCourseList(parentItem)" :display="parentItem.loadingFlag" v-if="parentItem.hasFlag" class="bottom-loading">
+					  <text class="bottom-loading-text">正在加载</text>
+					  <loading-indicator class="indicator" ></loading-indicator>
+					</loading> 
+				</list>
+			</swiper-item>
+		</swiper>
+	</div>
+</template>
+
+<script>
+	// #ifdef APP-PLUS
+	import uniTabBar from '@/components/tab-nvue/tabbar.nvue'
+	// #endif
+	import api from '@/api/index.js'
+	import fetch from '@/libs/request.js'
+	import { baseURL } from '@/config'
+	let timer = null
+	export default {
+		data() {
+			return {
+				// selectTab: 0, // 当前选中的tabbar
+				loadinging: true,
+				sliderList: [], // 轮播图列表
+				tabCurrentIndex: 0,
+				tabBars: [], // 学科列表
+				swiperHeight: '543wx', // swiper 高度
+				courseList: [], // 学科列表
+				classTypeId: null,
+				baseURL: baseURL,
+				handleExist: false
+			}
+		},
+		components: {
+			// #ifdef APP-PLUS
+			uniTabBar
+			// #endif
+		}, 
+		methods: {
+			// 切换Type
+			handleSelectType (type) {
+				this.courseList[this.tabCurrentIndex].selectType = type
+			},
+			// 获取学科列表
+			async getCourseType () { 
+				let res = await fetch(api.getCourseType)
+				if (res.code) throw res.msg
+				this.tabBars = res.data
+				res.data.forEach(item => {
+					item.name = item.dictLabel
+					item.id = item.dictValue
+					// 根据学科数量给每个学科创建默认的课程
+					this.courseList.push({
+						loadingFlag: 'hide',
+						courseTypeId: item.id,
+						pageNum: 0,
+						pageSize: 10,
+						selectType: 1, // 默认选中直播课
+						courseList: { 
+							liveList: [], // 直播课
+							specialList: [], // 专题课
+						},
+						hasFlag: true, // 是否还有更多
+						classTypeId: this.classTypeId
+					})
+				})
+				this.getCourseList(this.courseList[0]) 
+				uni.setStorageSync('course_type_list', res.data)
+			},
+			// 获取轮播图列表
+			async getPicasaList () {
+				let res = await fetch(api.getPicasaList)
+				this.sliderList = res.data
+			},
+			// 获取选课列表
+			getCourseList (obj) { 
+				if (timer) clearTimeout(timer)
+				timer = setTimeout(() => {
+					if (!obj.hasFlag) return // 说明已经没有更多啦
+					obj.loadingFlag = 'show'
+					obj.pageNum = ++obj.pageNum
+					// 过滤一下 list 
+					let cloneObj = JSON.parse(JSON.stringify(obj))
+					delete cloneObj.courseList
+					fetch(api.getCourseList, cloneObj).then(res => {
+						// type 1 为直播课 ，2 为专题课
+						res.rows.forEach(item => {  
+							this.tabBars.forEach(courseItem => {
+								if (item.courseTypeId === courseItem.id) item.courseName = courseItem.name
+							})
+							if (item.type === 1) obj.courseList.liveList.push(item)
+							else obj.courseList.specialList.push(item)
+						})
+						obj.hasFlag = obj.pageSize * obj.pageNum < res.total
+						obj.loadingFlag = 'hide'
+					})
+				}, 200)
+			},
+			// 前往课程详情页 
+			handleOpenCourseDetail (courseId) {
+				uni.navigateTo({ url: '/pages/course-detail/course-detail?courseId='+courseId }) 
+			},
+			// 前往活动页面
+			handleOpenActivity (actId) {
+				if (actId) uni.navigateTo({ url: '/pages/activity/activity?actId='+actId })
+			},
+			// 顶部tab 发生改变时触发
+			tabChange ({ detail: { current } }) { 
+				this.tabCurrentIndex = current // tab-bar选中
+				this.courseList.forEach(item => {
+					if (item.courseTypeId === this.tabBars[this.tabCurrentIndex].id) {
+						// 查看当前是否有数据
+						if (!item.courseList.liveList.length && !item.courseList.specialList.length) {
+							this.getCourseList(item)
+						}
+					}
+				})
+			},
+			// 根据用户的年级展示左上角
+			leftTopGrade () {
+				// #ifdef APP-PLUS
+				let gradeList = uni.getStorageSync('grade_list') || []
+				let val = ''
+				gradeList.forEach(item => {
+					item.child.forEach(childItem => {
+						if (childItem.id === this.classTypeId) val = childItem.name
+					})
+				}) 
+				let pages = getCurrentPages()
+				let page = pages[pages.length - 1]
+				let currentWebview = page.$getAppWebview()
+				let titleObj = currentWebview.getStyle().titleNView
+				if (!titleObj.buttons) return
+				titleObj.buttons[0].text = val 
+				currentWebview.setStyle({ titleNView: titleObj })  
+				// #endif 
+			}
+		},
+		onLoad() {
+			if (uni.getStorageSync('end_time')) this.handleExist = Date.now() > Date.parse(uni.getStorageSync('end_time')) ? true : false
+			this.classTypeId = uni.getStorageSync('user_info').classTypeId || 7
+			this.swiperHeight = (uni.getSystemInfoSync().windowHeight - uni.upx2px(90)) + 'wx'
+			if (uni.getStorageSync('token')) {
+				this.getCourseType()
+				this.getPicasaList()
+				// this.getCourseList()
+				this.leftTopGrade()
+			}
+		},
+		onNavigationBarButtonTap ({ index }) {
+			if (index === 0) return uni.navigateTo({ 
+				url: '/pages/choose-grade/choose-grade',
+				animationType: 'slide-in-bottom'
+			})
+			if (index === 1) return uni.navigateTo({ url: '/pages/cart/cart' })
+		},
+		// 前往搜索页面
+		onNavigationBarSearchInputClicked () {
+			uni.navigateTo({ url: '/pages/search/search' }) 
+		} 
+	}
+</script>
+
+<style>
+	.card-swiper {
+		height: 300rpx;
+	}
+	
+	.card-swiper-item {
+		width: 680rpx; 
+		padding-left: 35rpx;
+		padding-right: 35rpx;
+	}
+	
+	.swiper-item {
+		width: 680rpx; 
+		height: 300rpx;
+		border-radius: 6px; 
+	}
+	
+	.swiper-item-image {
+		width: 680rpx;
+		height: 300rpx;
+		border-radius: 6px; 
+	}
+	
+	.course-type {
+		/* 750 */
+		margin-top: 30rpx;
+		height: 90rpx;
+		flex-direction: row;
+	}
+	
+	.course-type-item {
+		width: 375rpx;
+		height: 90rpx; 
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+	
+	.course-type-item-text {
+		line-height: 90rpx;
+		color: #9B9B9B;
+		font-size: 14px;
+	}
+	
+	.course-type-item-active {
+		color: #333333;
+		font-size: 17px;
+		border-color: #8987DF;
+	}
+	
+	.course-type-item-bottom {
+		position: absolute;
+		width: 0rpx;
+		height: 6rpx;
+		background-color: #8987DF;
+		bottom: 0rpx; 
+		transition-property: width;
+		transition-duration: .2s;
+	}
+	
+	.course-type-item-bottom_active {
+		width: 50rpx;
+	}
+	
+	.course-list {
+		padding: 30rpx;
+		padding-bottom: 0;
+		background-color: #f7f7f7;
+	}
+	
+	.course-item {
+		padding: 30rpx;
+		background-color: #FFF;
+		border-radius: 7px;
+		position: relative;
+		margin-bottom: 30rpx;
+	}
+	
+	.course-name {
+		position: absolute;
+		top: 30rpx;
+		left: -8rpx; 
+		width: 126rpx;
+		height: 60rpx;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.course-name-bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 126rpx;
+		height: 60rpx;
+	}
+	
+	.course-name-text {
+		font-size: 14px;
+		color: #FFFFFF;
+	}
+	
+	.price {
+		text-align: right; 
+	}
+	
+	.price-text {
+		text-align: right;
+		font-size: 22px;
+		color: #D0021B;
+	}
+	
+	.course-title {
+		margin-top: 20rpx;
+		font-size: 17px;
+		font-weight: bold; 
+		color: #333333;
+	}
+	
+	.course-time {
+		font-size: 14px;
+		color: #9B9B9B;
+		margin-top: 10rpx;
+	}
+	
+	.course-level {
+		margin-top: 16rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.course-level-title {
+		font-size: 14px;
+		color: #9B9B9B;
+		margin-right: 20rpx;
+	}
+	
+	.course-level-star {
+		width: 24rpx;
+		height: 24rpx;
+		margin-right: 6rpx;
+	}
+	
+	.teacher {
+		margin-top: 30rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.teacher-left {
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.teacher-avatar {
+		width: 56rpx;
+		height: 56rpx;
+		border-radius: 50%;
+		margin-right: 20rpx;
+	}
+	
+	.teacher-name {
+		font-size: 14px;
+	}
+	
+	.course-collection {
+		color: #8987DF;
+		font-size: 14px;
+	}
+	
+	.indicator {
+	    height: 20px;
+	    width: 20px;
+	    color: red;
+	}
+	
+	.bottom-loading {
+		padding: 10px 0;
+		width: 750rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.bottom-loading-text {
+		color: #9B9B9B;
+		font-size: 14px;
+		margin-right: 10rpx;
+	}
+	
+	.tip-no-more {
+		padding: 10px 0;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.tip-no-more-text {
+		font-size: 14px;
+		color: #9B9B9B;
+	}
+</style>

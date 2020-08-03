@@ -1,0 +1,178 @@
+page {
+  background: #F7F7F7;
+}
+.container > .search-container {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 96rpx;
+  background: #FFFFFF;
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.container > .search-container > view {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 690rpx;
+  height: 72rpx;
+  background: #F7F7F7;
+  border-radius: 36rpx;
+}
+.container > .search-container > view image {
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0 30rpx;
+  margin-right: 20rpx;
+}
+.container > .search-container > view input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.container .course-list {
+  padding: 30rpx;
+  padding-bottom: 0;
+  margin-top: 96rpx;
+  background: #F7F7F7;
+}
+.container .course-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 30rpx;
+  background-color: #FFF;
+  border-radius: 7px;
+  position: relative;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.03);
+}
+.container .course-name {
+  position: absolute;
+  top: 30rpx;
+  left: -8rpx;
+  width: 126rpx;
+  height: 60rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.container .course-name-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 126rpx;
+  height: 60rpx;
+}
+.container .course-name-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  position: absolute;
+  z-index: 2;
+  -webkit-transform: translateY(-5rpx);
+          transform: translateY(-5rpx);
+}
+.container .price {
+  text-align: right;
+}
+.container .price-text {
+  text-align: right;
+  font-size: 22px;
+  color: #D0021B;
+}
+.container .course-title {
+  margin-top: 20rpx;
+  font-size: 17px;
+  font-weight: bold;
+  color: #333333;
+}
+.container .course-time {
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-top: 10rpx;
+}
+.container .course-level {
+  margin-top: 16rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .course-level-title {
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-right: 20rpx;
+}
+.container .course-level-star {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 6rpx;
+}
+.container .teacher {
+  margin-top: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.container .teacher-left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .teacher-avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.container .teacher-name {
+  font-size: 14px;
+}
+.container .course-collection {
+  color: #8987DF;
+  font-size: 14px;
+}
+

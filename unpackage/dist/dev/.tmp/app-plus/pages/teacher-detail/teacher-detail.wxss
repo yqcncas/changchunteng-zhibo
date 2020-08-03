@@ -1,0 +1,286 @@
+.container .header {
+  width: calc(100vw - 60rpx);
+  height: 470rpx;
+  background: #8987DF;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  position: relative;
+  z-index: -1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.container .header .teacherPic {
+  margin-top: 84rpx;
+  width: 300rpx;
+  height: 386rpx;
+  margin-right: 60rpx;
+}
+.container .header .info {
+  margin-top: 140rpx;
+  color: #FFFFFF;
+}
+.container .header .info .name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.container .header .info .type {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.container .header .info .labels {
+  width: 300rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.container .header .info .labels text {
+  margin-top: 20rpx;
+  padding: 0rpx 25rpx;
+  height: 40rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  margin-right: 20rpx;
+  border-radius: 20px;
+}
+.container .teacher-tabs {
+  background: #FFFFFF;
+  border-radius: 20px 20px 0 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 90rpx;
+  margin-top: -45rpx;
+}
+.container .teacher-tabs view {
+  -webkit-box-flex: 375rpx;
+  -webkit-flex: 375rpx;
+          flex: 375rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #9B9B9B;
+  position: relative;
+}
+.container .teacher-tabs view::before {
+  content: "";
+  width: 0rpx;
+  height: 6rpx;
+  position: absolute;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background: #8987DF;
+  bottom: 0;
+}
+.container .teacher-tabs view.select {
+  font-size: 17px;
+  color: #8987DF;
+  font-weight: bold;
+}
+.container .teacher-tabs view.select::before {
+  width: 40rpx;
+}
+.course-list {
+  padding: 30rpx;
+  padding-bottom: 0;
+}
+.course-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 30rpx;
+  background-color: #FFF;
+  border-radius: 7px;
+  position: relative;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.03);
+}
+.course-name {
+  position: absolute;
+  top: 30rpx;
+  left: -8rpx;
+  width: 126rpx;
+  height: 60rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.course-name-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 126rpx;
+  height: 60rpx;
+}
+.course-name-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  position: absolute;
+  z-index: 2;
+  -webkit-transform: translateY(-5rpx);
+          transform: translateY(-5rpx);
+}
+.price {
+  text-align: right;
+}
+.price-text {
+  text-align: right;
+  font-size: 22px;
+  color: #D0021B;
+}
+.course-title {
+  margin-top: 20rpx;
+  font-size: 17px;
+  font-weight: bold;
+  color: #333333;
+}
+.course-time {
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-top: 10rpx;
+}
+.course-level {
+  margin-top: 16rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.course-level-title {
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-right: 20rpx;
+}
+.course-level-star {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 6rpx;
+}
+.teacher {
+  margin-top: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.teacher-left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.teacher-avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.teacher-name {
+  font-size: 14px;
+}
+.course-collection {
+  color: #8987DF;
+  font-size: 14px;
+}
+.come-buy {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 100rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #eee;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background: #FFFFFF;
+}
+.come-buy > view:first-child {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-right: 30rpx;
+}
+.come-buy > view:first-child text:first-child {
+  font-size: 12px;
+  color: #9B9B9B;
+}
+.come-buy > view:first-child text:last-child {
+  font-size: 18px;
+  color: #D0021B;
+}
+.come-buy > view:last-child {
+  width: 260rpx;
+  height: 100%;
+  background: #8987DF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #FFFFFF;
+}
+

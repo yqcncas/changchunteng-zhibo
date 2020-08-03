@@ -1,0 +1,129 @@
+{
+  "pages": [
+    "pages/live-detail/live-detail",
+    "pages/my/my",
+    "pages/course-detail/course-detail",
+    "pages/total-course/total-course",
+    "pages/my-info/my-info",
+    "pages/system-set/system-set",
+    "pages/my/study-money",
+    "pages/recharge/recharge",
+    "pages/cash-out/cash-out",
+    "pages/cart/cart",
+    "pages/choose-grade/choose-grade",
+    "pages/my/service",
+    "pages/bind-mobile/bind-mobile",
+    "pages/login/login",
+    "pages/wechat-login/wechat-login",
+    "pages/my/invitation-qrcode",
+    "pages/order-detail/order-detail",
+    "pages/activity/activity",
+    "pages/search/search",
+    "pages/teacher-detail/teacher-detail",
+    "pages/my-info/edit-nickname/edit-nickname",
+    "pages/operate-guide/operate-guide",
+    "pages/video-detail/video-detail",
+    "pages/register/register"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "color": "#9b9b9b",
+    "selectedColor": "#3c3c3c",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon/tab-bar/1.png",
+        "selectedIconPath": "static/icon/tab-bar/2.png",
+        "text": "选课"
+      },
+      {
+        "pagePath": "pages/study/study",
+        "iconPath": "static/icon/tab-bar/3.png",
+        "selectedIconPath": "static/icon/tab-bar/4.png",
+        "text": "学习"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/icon/tab-bar/5.png",
+        "selectedIconPath": "static/icon/tab-bar/6.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "nvue": {
+    "pages": {
+      "pages/index/index.html": {
+        "window": {
+          "usingComponents": {},
+          "navigationBarTitleText": "",
+          "titleNView": {
+            "buttons": [
+              {
+                "type": "none",
+                "text": "初一",
+                "width": "auto",
+                "fontSize": "17px",
+                "select": true,
+                "float": "left"
+              },
+              {
+                "type": "none",
+                "width": "auto",
+                "fontSrc": "/static/font/cart.ttf",
+                "text": "  ",
+                "fontSize": "20px",
+                "color": "#8987df"
+              }
+            ],
+            "searchInput": {
+              "backgroundColor": "#F7F7F7",
+              "borderRadius": "15px",
+              "disabled": true,
+              "placeholderColor": "#9B9B9B",
+              "placeholder": "请输入关键词"
+            }
+          }
+        },
+        "nvue": true
+      },
+      "pages/study/study.html": {
+        "window": {
+          "usingComponents": {},
+          "navigationBarTitleText": "学习"
+        },
+        "nvue": true
+      },
+      "pages/order/order.html": {
+        "window": {
+          "usingComponents": {},
+          "navigationBarTitleText": "订单列表"
+        },
+        "nvue": true
+      },
+      "pages/my/my-collect.html": {
+        "window": {
+          "usingComponents": {},
+          "navigationBarTitleText": "我的收藏"
+        },
+        "nvue": true
+      }
+    },
+    "entryPagePath": "pages/index/index"
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "常春藤辅导",
+  "compilerVersion": "2.6.5",
+  "usingComponents": {}
+}

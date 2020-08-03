@@ -1,0 +1,75 @@
+.container {
+  overflow: hidden;
+}
+.container .header {
+  width: 100vw;
+  height: 522rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.container .header > .bg {
+  width: 100vw;
+  height: 522rpx;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+.container .header > .logo {
+  width: 180rpx;
+  height: 180rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 158rpx;
+}
+.container .header > view {
+  margin-top: 30rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+.container .confirm-login {
+  width: 600rpx;
+  height: 100rpx;
+  background: #8987DF;
+  border-radius: 50rpx;
+  margin: 0 auto;
+  margin-top: 762rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #FFFFFF;
+}
+.container .confirm-login > image {
+  width: 40rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
+}
+.container .confirm-login:active {
+  opacity: 0.8;
+}
+.container .other-login {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-bottom: 40rpx;
+  color: #B2B2B2;
+}
+

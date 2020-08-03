@@ -1,0 +1,1 @@
+<view class="container"><view class="qrcode-container"><view>扫一扫下方二维码</view><view class="qrcode-content"><image src="{{''+baseUrl+qrCode}}" mode="aspectFill"></image></view></view><view class="handle-container"><view data-event-opts="{{[['tap',[['handleSaveImage',['$event']]]]]}}" bindtap="__e">保存二维码</view></view></view>

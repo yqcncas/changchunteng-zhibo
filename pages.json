@@ -1,0 +1,250 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"type":"none",
+								"text": "初一",
+								"width": "auto",
+								"fontSize": "17px",
+								"select": true,
+								"float": "left"
+							}, 
+							{
+								"type":"none",
+								"width": "auto",
+								"fontSrc": "/static/font/cart.ttf",
+								"text": " \ue900 ", 
+								"fontSize": "20px",
+								"color": "#8987df"
+							}
+						],
+						"searchInput": {
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "15px",
+							"disabled": true,
+							"placeholderColor": "#9B9B9B",
+							"placeholder": "请输入关键词"
+						}
+					}
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/live-detail/live-detail",
+            "style" : {
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always",
+				"app-plus": {
+					"softinputNavBar": "none", 
+					"softinputMode": "adjustResize"
+				}
+			}
+        },
+		{
+		    "path" : "pages/study/study",
+		    "style" : {
+				"navigationBarTitleText": "学习"
+			}
+		}
+        ,{
+            "path" : "pages/my/my",
+            "style" : {
+				"navigationBarTitleText": "我的"
+			}
+        }
+        ,{
+            "path" : "pages/course-detail/course-detail",
+            "style" : {
+				"transparentTitle": "auto",
+				"navigationBarTitleText": "课程详情"
+			}
+        }
+        ,{
+            "path" : "pages/total-course/total-course",
+            "style" : {
+				"navigationBarTitleText": "全部课程"
+			}
+        }
+        ,{
+            "path" : "pages/my-info/my-info",
+            "style" : {
+				"navigationBarTitleText": "个人资料"
+			}
+        }
+        ,{
+            "path" : "pages/system-set/system-set",
+            "style" : {
+				"navigationBarTitleText": "系统设置"
+			}
+        },
+		{
+		    "path" : "pages/my/study-money",
+		    "style" : {
+				"navigationBarTitleText": "我的学币"
+			}
+		}
+        ,{
+            "path" : "pages/recharge/recharge",
+            "style" : {
+				"navigationBarTitleText": "充值"
+			}
+        }
+        ,{
+            "path" : "pages/cash-out/cash-out",
+            "style" : {
+				"navigationBarTitleText": "提现"
+			}
+        }
+        ,{
+            "path" : "pages/cart/cart",
+            "style" : {
+				"navigationBarTitleText": "购物车"
+			}
+        }
+        ,{
+            "path" : "pages/choose-grade/choose-grade",
+            "style" : {
+				"navigationBarTitleText": "设置年级"
+			}
+        },
+		{
+		    "path" : "pages/my/service",
+		    "style" : {
+				"navigationBarTitleText": "我的客服"
+			}
+		}
+        ,{
+            "path" : "pages/bind-mobile/bind-mobile",
+            "style" : {
+				"navigationBarTitleText": "绑定手机"
+			}
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+        }
+        ,{
+            "path" : "pages/wechat-login/wechat-login",
+            "style" : {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" : {
+				"navigationBarTitleText": "订单列表"
+			}
+        }
+		,{
+		    "path" : "pages/my/my-collect",
+		    "style" : {
+				"navigationBarTitleText": "我的收藏"
+			}
+		}
+        ,{
+            "path" : "pages/my/invitation-qrcode",
+            "style" : {
+				"navigationBarTitleText": "我的二维码"
+			}
+        }
+        ,{
+            "path" : "pages/order-detail/order-detail",
+            "style" : {
+				"navigationBarTitleText": "订单详情"
+			}
+        }
+        ,{
+            "path" : "pages/activity/activity",
+            "style" : {
+				"navigationBarTitleText": "活动"
+			}
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {
+				"navigationBarTitleText": "搜索"
+			}
+        }
+        ,{
+            "path" : "pages/teacher-detail/teacher-detail",
+            "style" : {
+				"transparentTitle": "always"
+			}
+        }
+        ,{
+            "path" : "pages/my-info/edit-nickname/edit-nickname",
+            "style" : {
+				"navigationBarTitleText": "修改昵称"
+			}
+        }
+        ,{
+            "path" : "pages/operate-guide/operate-guide",
+            "style" : {
+				"navigationBarTitleText": "操作指南"
+			}
+        }
+        ,{
+            "path" : "pages/video-detail/video-detail",
+            "style" : {
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"titleColor":"#FFFFFF"
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" : {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"color": "#9b9b9b",
+		"selectedColor": "#3c3c3c",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/icon/tab-bar/1.png",
+				"selectedIconPath": "static/icon/tab-bar/2.png",
+				"text": "选课"
+			},
+			{
+				"pagePath": "pages/study/study",
+				"iconPath": "static/icon/tab-bar/3.png",
+				"selectedIconPath": "static/icon/tab-bar/4.png",
+				"text": "学习"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/icon/tab-bar/5.png",
+				"selectedIconPath": "static/icon/tab-bar/6.png",
+				"text": "我的"
+			}
+		]
+	}
+}

@@ -1,0 +1,153 @@
+.container {
+  overflow: hidden;
+}
+.container .header {
+  width: 100vw;
+  height: 522rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.container .header > .bg {
+  width: 100vw;
+  height: 522rpx;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+.container .header > .logo {
+  width: 180rpx;
+  height: 180rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 158rpx;
+}
+.container .header > view {
+  margin-top: 30rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+.container .ipt-container {
+  margin-top: 602rpx;
+}
+.container .ipt-container > view:first-child {
+  width: 600rpx;
+  height: 100rpx;
+  background: #FFFFFF;
+  border-radius: 50rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px 0 rgba(137, 135, 223, 0.03), 0 2px 4px 0 rgba(137, 135, 223, 0.05);
+  margin-bottom: 30rpx;
+}
+.container .ipt-container > view:first-child image {
+  width: 32rpx;
+  height: 36rpx;
+  margin: 0 30rpx;
+}
+.container .ipt-container > view:first-child input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  font-size: 14px;
+  padding-left: 30rpx;
+  border-left: 1px solid #F0F0F0;
+}
+.container .ipt-container > view:last-child {
+  width: 600rpx;
+  height: 100rpx;
+  background: rgba(137, 135, 223, 0.05);
+  border-radius: 50rpx;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .ipt-container > view:last-child image {
+  max-width: 36rpx;
+  min-width: 36rpx;
+  max-height: 36rpx;
+  min-height: 36rpx;
+  margin: 0 30rpx;
+}
+.container .ipt-container > view:last-child input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding-left: 30rpx;
+  border-left: 1px solid #F0F0F0;
+  font-size: 14px;
+}
+.container .ipt-container > view:last-child > view {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-right: 40rpx;
+}
+.container .ipt-container > view:last-child > view text:first-child {
+  color: #4A90E2;
+}
+.container .ipt-container > view:last-child > view text:last-child {
+  color: #a2a2a2;
+}
+.container .confirm-login {
+  width: 600rpx;
+  height: 100rpx;
+  background: #8987DF;
+  border-radius: 50rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #FFFFFF;
+}
+.container .confirm-login:active {
+  opacity: 0.8;
+}
+.container .other-login {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .other-login > text {
+  color: #CCCCCC;
+}
+.container .other-login > view {
+  margin-top: 22rpx;
+  margin-bottom: 40rpx;
+}
+.container .other-login image {
+  width: 60rpx;
+  height: 60rpx;
+}
+

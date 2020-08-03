@@ -1,0 +1,7 @@
+{
+  "transparentTitle": "auto",
+  "navigationBarTitleText": "课程详情",
+  "usingComponents": {
+    "parser": "/components/jyf-Parser/index"
+  }
+}

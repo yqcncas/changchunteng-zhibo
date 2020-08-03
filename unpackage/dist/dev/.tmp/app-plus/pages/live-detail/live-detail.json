@@ -1,0 +1,7 @@
+{
+  "navigationBarTextStyle": "white",
+  "transparentTitle": "always",
+  "softinputNavBar": "none",
+  "softinputMode": "adjustResize",
+  "usingComponents": {}
+}

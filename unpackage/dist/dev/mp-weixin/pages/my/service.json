@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的客服",
+  "usingComponents": {
+    "send-msg": "/pages/my/send"
+  }
+}

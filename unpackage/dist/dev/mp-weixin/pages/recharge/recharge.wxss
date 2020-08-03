@@ -1,0 +1,171 @@
+page {
+  background: #F7F7F7;
+}
+.container {
+  background: #FFFFFF;
+  border-top: 1px solid #F0F0F0;
+}
+.container .type-container {
+  padding: 0 30rpx;
+}
+.container .type-container .title {
+  font-size: 17px;
+  color: #333333;
+  font-weight: bold;
+  padding-top: 30rpx;
+}
+.container .type-container .main > view {
+  padding: 30rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.container .type-container .main > view .icon {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  border: 1px solid #DDDDDD;
+  margin-right: 30rpx;
+}
+.container .type-container .main > view .icon > text {
+  content: "";
+  width: 0rpx;
+  height: 0rpx;
+  border-radius: 50%;
+  background: #8987DF;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.container .type-container .main > view .icon.select {
+  border: 1px solid #8987DF;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  /* ios 不支持 */
+  /*
+						&::before {
+							content: "";
+							width: 24rpx;
+							height: 24rpx;
+							border-radius: 50%;
+							background: #8987DF;
+						}
+						*/
+}
+.container .type-container .main > view .icon.select > text {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #8987DF;
+}
+.container .type-container .main > view image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 20rpx;
+}
+.container .type-container .main > view:last-child {
+  border-bottom: none;
+}
+.container .recharge-money {
+  padding: 30rpx;
+  margin-bottom: 90rpx;
+}
+.container .recharge-money .title {
+  font-size: 17px;
+  color: #333333;
+  font-weight: bold;
+}
+.container .recharge-money .money-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.container .recharge-money .money-list > view {
+  width: 210rpx;
+  height: 140rpx;
+  box-sizing: border-box;
+  border: 1px solid #F0F1F1;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  margin-right: 30rpx;
+}
+.container .recharge-money .money-list > view > text:first-child {
+  color: #5B5B5B;
+}
+.container .recharge-money .money-list > view > view {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #E9C885;
+}
+.container .recharge-money .money-list > view > view text:first-child {
+  font-size: 12px;
+}
+.container .recharge-money .money-list > view > view text:last-child {
+  font-size: 24px;
+}
+.container .recharge-money .money-list > view:nth-child(3n) {
+  margin-right: 0;
+}
+.container .recharge-money .money-list > view.select {
+  background: rgba(233, 200, 133, 0.2);
+  border: 1px solid #E9C885;
+}
+.container .recharge-money .explain {
+  margin-top: 30rpx;
+  color: #9B9B9B;
+}
+.container .recharge-money .explain view:last-child {
+  margin-left: 54rpx;
+  margin-top: 10rpx;
+}
+.container .confirm-buy {
+  width: 750rpx;
+  height: 90rpx;
+  background: #8987DF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+}
+.container .no-select-confirm {
+  background: #adadad;
+}
+

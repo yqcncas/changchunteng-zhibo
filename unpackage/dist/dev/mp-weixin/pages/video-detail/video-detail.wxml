@@ -1,0 +1,1 @@
+<view class="container"><video style="width:100vw;height:100vh;" id="video" src="{{src}}" autoplay="{{true}}" loop="{{true}}"></video></view>

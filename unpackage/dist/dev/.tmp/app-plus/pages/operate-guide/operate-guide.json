@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "操作指南",
+  "usingComponents": {
+    "parser": "/components/jyf-Parser/index"
+  }
+}

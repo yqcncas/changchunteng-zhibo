@@ -1,0 +1,115 @@
+page {
+  background: #F7F7F7;
+}
+.container {
+  background: #FFFFFF;
+}
+.container .header {
+  position: relative;
+  padding: 30rpx;
+}
+.container .header .user-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .header .user-info .avatar {
+  width: 140rpx;
+  height: 140rpx;
+  background: #f2f2f2;
+  border-radius: 50%;
+  margin-right: 40rpx;
+}
+.container .header .user-info text {
+  font-weight: bold;
+  font-size: 17px;
+}
+.container .header::before {
+  content: "";
+  position: absolute;
+  width: 690rpx;
+  height: 1px;
+  background: #F7F7F7;
+  bottom: 0;
+}
+.container .collect-order {
+  padding: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.container .collect-order > view {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .collect-order > view image {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 30rpx;
+}
+.container .collect-order > view:first-child {
+  border-right: 1rpx solid #F0F0F0;
+}
+.container .nav-list > .item {
+  position: relative;
+  padding: 25rpx;
+  background: #fff;
+}
+.container .nav-list > .item view {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .nav-list > .item view image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 24rpx;
+}
+.container .nav-list > .item .money {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.container .nav-list > .item .money .balance {
+  color: #9B9B9B;
+  font-size: 14px;
+  margin-right: 20rpx;
+}
+.container .nav-list > .item::before {
+  content: "";
+  position: absolute;
+  bottom: 0rpx;
+  left: 90rpx;
+  width: 600rpx;
+  height: 1px;
+  background: #F6F6F6;
+}
+.container .nav-list > .item:first-child {
+  border-radius: 7px 7px 0 0;
+}
+.container .nav-list > .item:last-child {
+  border-radius: 0 0 7px 7px;
+}
+

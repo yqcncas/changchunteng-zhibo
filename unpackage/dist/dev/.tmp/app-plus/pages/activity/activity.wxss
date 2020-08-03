@@ -1,0 +1,214 @@
+.container .header-img {
+  position: relative;
+  z-index: -1;
+  width: 100vw;
+  height: 530rpx;
+  vertical-align: middle;
+}
+.container .active-title {
+  width: 100vw;
+  height: 90rpx;
+  background: #FFFFFF;
+  border-radius: 20px 20px 0 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: rgba(51, 51, 51, 0.7);
+  margin-top: -45rpx;
+}
+.container .course-list {
+  padding: 30rpx;
+  margin-bottom: 100rpx;
+}
+.container .course-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 30rpx;
+  background-color: #FFF;
+  border-radius: 7px;
+  position: relative;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.03);
+}
+.container .course-name {
+  position: absolute;
+  top: 30rpx;
+  left: -8rpx;
+  width: 126rpx;
+  height: 60rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.container .course-name-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 126rpx;
+  height: 60rpx;
+}
+.container .course-name-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  position: absolute;
+  z-index: 2;
+  -webkit-transform: translateY(-5rpx);
+          transform: translateY(-5rpx);
+}
+.container .price {
+  text-align: right;
+}
+.container .price-text {
+  text-align: right;
+  font-size: 22px;
+  color: #D0021B;
+}
+.container .course-title {
+  margin-top: 20rpx;
+  font-size: 17px;
+  font-weight: bold;
+  color: #333333;
+}
+.container .course-time {
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-top: 10rpx;
+}
+.container .course-level {
+  margin-top: 16rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .course-level-title {
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-right: 20rpx;
+}
+.container .course-level-star {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 6rpx;
+}
+.container .teacher {
+  margin-top: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.container .teacher-left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container .teacher-avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.container .teacher-name {
+  font-size: 14px;
+}
+.container .course-collection {
+  color: #8987DF;
+  font-size: 14px;
+}
+.container .come-buy {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 100rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #eee;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background: #FFFFFF;
+}
+.container .come-buy > view:first-child {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-right: 30rpx;
+}
+.container .come-buy > view:first-child text:first-child {
+  font-size: 12px;
+  color: #9B9B9B;
+}
+.container .come-buy > view:first-child text:last-child {
+  font-size: 18px;
+  color: #D0021B;
+}
+.container .come-buy > view:last-child {
+  width: 260rpx;
+  height: 100%;
+  background: #8987DF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #FFFFFF;
+}
+.container .no-buy {
+  background: #9c9c9c !important;
+}
+

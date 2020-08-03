@@ -1,0 +1,74 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+
+page {
+	font-size: 14px;
+	color: #333333;
+}
+.line-30 {
+	height: 30rpx;
+	background-color: #f7f7f7;
+}
+.right-arrow {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.right-arrow::after {
+	content: "";
+	width: 15rpx;
+	height: 15rpx;
+	border-top: 4rpx solid #ccc;
+	border-right: 4rpx solid #ccc;
+	-webkit-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+
+

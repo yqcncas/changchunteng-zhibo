@@ -1,0 +1,147 @@
+page {
+  background: #F7F7F7;
+}
+.container {
+  background: #FFFFFF;
+  border-top: 1px solid #F0F0F0;
+}
+.container > .header {
+  position: relative;
+  padding: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.container > .header > view:first-child {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container > .header > view:first-child text:first-child {
+  color: #9B9B9B;
+  margin-right: 40rpx;
+}
+.container > .header > view:first-child text:last-child {
+  font-size: 28px;
+  color: #333333;
+  font-weight: bold;
+}
+.container > .header > view:last-child view {
+  width: 150rpx;
+  height: 60rpx;
+  background: #8987DF;
+  margin-bottom: 30rpx;
+  border-radius: 8rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #FFFFFF;
+}
+.container > .header > view:last-child view:last-child {
+  margin-bottom: 0;
+}
+.container > .header > view:last-child view:active {
+  background: #6462a5;
+}
+.container > .header::before {
+  content: "";
+  position: absolute;
+  width: 690rpx;
+  height: 1px;
+  left: 30rpx;
+  bottom: 0;
+  background: #F0F0F0;
+}
+.container > .money-type {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 30rpx;
+}
+.container > .money-type > view {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.container > .money-type > view text:first-child {
+  font-size: 12px;
+  color: #9B9B9B;
+  margin-bottom: 8rpx;
+}
+.container > .money-type > view text:last-child {
+  font-size: 17px;
+  font-weight: bold;
+}
+.container > .money-type > view:first-child {
+  border-right: 1px solid #F0F0F0;
+}
+.container > .cash-record > .item {
+  padding: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  position: relative;
+}
+.container > .cash-record > .item .left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.container > .cash-record > .item .left text:first-child {
+  font-size: 12px;
+  margin-bottom: 10rpx;
+  color: #9B9B9B;
+}
+.container > .cash-record > .item .right .add {
+  font-size: 17px;
+  color: #618FF0;
+}
+.container > .cash-record > .item .right .reduce {
+  font-size: 17px;
+  color: #D0021B;
+}
+.container > .cash-record > .item::before {
+  content: "";
+  position: absolute;
+  left: 30rpx;
+  bottom: 0;
+  width: 720rpx;
+  height: 1px;
+  background: #f0f0f0;
+}
+.container > .cash-record > .item:last-child::before {
+  display: none;
+}
+

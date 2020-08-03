@@ -1,0 +1,41 @@
+.send-container {
+  position: fixed;
+  left: 0;
+  bottom: 0rpx;
+  box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.03);
+  background: #f7f7f7;
+  width: 750rpx;
+  padding-top: 16rpx;
+  padding-bottom: 14rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.send-container textarea {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background: #fff;
+  height: 80rpx;
+  border-radius: 8rpx;
+  width: 544rpx;
+  padding: 20rpx 30rpx;
+  margin-left: 30rpx;
+}
+.send-container .confirm {
+  width: 116rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.send-container .confirm .send-text {
+  text-align: center;
+  color: #4A90E2;
+}
+

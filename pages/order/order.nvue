@@ -1,0 +1,441 @@
+<template>
+	<view>
+		<!-- 顶部tab -->
+		<view class="tab-bar">
+			<view class="tab-bar-item" @click="tabChange({ detail: { current: 0 } })">
+				<text :class="['tab-bar-item-text', selectTab === 0 ? 'select-tab-bar-item-text' : '']">全部订单</text>
+				<view :class="['tab-bottom-border', selectTab === 0 ? 'select-tab-bar' : '']"></view>
+			</view> 
+			<view class="tab-bar-item" @click="tabChange({ detail: { current: 1 } })">
+				<text :class="['tab-bar-item-text', selectTab === 1 ? 'select-tab-bar-item-text' : '']">已支付</text>
+				<view :class="['tab-bottom-border', selectTab === 1 ? 'select-tab-bar' : '']"></view>
+			</view>
+			<view class="tab-bar-item" @click="tabChange({ detail: { current: 2 } })">
+				<text :class="['tab-bar-item-text', selectTab === 2 ? 'select-tab-bar-item-text' : '']">待支付</text>
+				<view :class="['tab-bottom-border', selectTab === 2 ? 'select-tab-bar' : '']"></view>
+			</view>
+			<view class="tab-bar-item" @click="tabChange({ detail: { current: 3 } })">
+				<text :class="['tab-bar-item-text', selectTab === 3 ? 'select-tab-bar-item-text' : '']">已取消</text>
+				<view :class="['tab-bottom-border', selectTab === 3 ? 'select-tab-bar' : '']"></view>
+			</view>
+		</view> 
+		<!-- 订单列表 -->
+		<swiper class="swiper" :style="{ height: swiperHeight }" :current="selectTab" @change="tabChange">
+			<swiper-item v-for="(item, index) in orderList" :key="index">
+				<list>
+					<cell>
+						<view class="order-list"> 
+							<!-- 订单 -->
+							<view :class="['item', orderIndex === (item.list.length -1) ? 'last-item' : ''] "  v-for="(orderItem, orderIndex) in item.list" :key="orderItem.orderId" @click="handleOpenOrderDetail(orderItem.orderId)">
+								<!-- 订单编号 -->
+								<view class="order-number">
+									<view class="order-number-main">
+										<text class="order-number-name">订单编号</text>
+										<text style="color: #9B9B9B;font-size: 14px;">{{ orderItem.orderNo }}</text>
+									</view>
+									<text class="order-number-paid">{{ orderItem.status === 1 ? '已支付' : orderItem.status === 2 ? '待支付' : '已取消' }}</text>
+								</view> 
+								<!-- 订单课程 列表-->
+								<view class="order-course-list">
+									<view class="order-course-item" v-for="(courseItem, courseIndex) in orderItem.orderItems">
+										<view class="order-course-item-header">
+											<text class="order-course-type">{{ courseItem.course.courseTypeName }}</text>
+											<text class="order-course-price">¥{{ courseItem.course.price }}</text>
+										</view>
+										<text class="order-course-name">{{ courseItem.course.name }}</text>
+										<!-- 老师头像，姓名 -->
+										<view class="" :class="['order-course-base-info', courseIndex === orderItem.orderItems.length-1 ? 'last-order-course-base-info' : '' ]"> <!-- 此处到时候改为length -->
+											<view class="order-course-base-info-left"> 
+												<image class="teacher-avatar" :src="baseURL + courseItem.course.avatar" mode="aspectFill"></image>
+												<text class="teacher-name">{{ courseItem.course.teacherName }}</text>
+											</view>
+											<text class="order-course-base-info-level">共{{ courseItem.course.childNum }}讲</text>
+										</view>
+									</view>
+								</view>
+								<!-- 总价 -->
+								<view class="order-total">
+									<text class="total-count">共{{ orderItem.num }}项，总计：</text>
+									<text class="total-price">¥{{ orderItem.money }}</text>
+								</view>
+								<!-- 末支付时渲染 -->
+								<view class="no-buy" v-if="orderItem.status === 2">
+									<view @click.stop="handleCancelOrder($event, orderItem.orderId, item)" class="cancel-order"><text class="cancel-order-text">取消订单</text></view>
+									<view class="payment"><text class="payment-text">立即支付</text></view>
+								</view>
+							</view>
+							
+						</view>
+						<view class="tip-no-more" v-if="!item.hasFlag"> 
+							<text class="tip-no-more-text">已经到底啦~</text>
+						</view>  
+					</cell>
+					 <!-- v-if="item.hasFlag" -->
+					<loading @loading="getOrderList(item)" :display="item.loadingFlag" class="bottom-loading" v-if="item.hasFlag">
+					  <text class="bottom-loading-text">正在加载</text>
+					  <loading-indicator class="indicator" ></loading-indicator>
+					</loading> 
+				</list>
+			</swiper-item>
+		</swiper>
+	</view>
+</template>
+
+<script>
+	import api from '@/api/index.js'
+	import fetch from '@/libs/request.js'
+	import { baseURL } from '@/config'
+	export default {
+		data() {
+			return {
+				baseURL,
+				course_type_list: [], // 学科列表
+				selectTab: 0, // 当前选中的tabbar
+				swiperHeight: '543wx', // swiper 高度
+				orderList: [
+					{
+						isLoad: false, // 是否加载
+						pageNum: 0,
+						pageSize: 10,
+						status: null, // 状态 1.已支付 2.待支付 3.已取消
+						hasFlag: true, // 是否还有更多
+						list: [],
+						loadingFlag: 'show'
+					},
+					{
+						isLoad: false, // 是否加载
+						pageNum: 0,
+						pageSize: 10,
+						status: 1, // 状态 1.已支付 2.待支付 3.已取消
+						hasFlag: true, // 是否还有更多
+						list: [],
+						loadingFlag: 'show'
+					},
+					{
+						isLoad: false, // 是否加载
+						pageNum: 0,
+						pageSize: 10,
+						status: 2, // 状态 1.已支付 2.待支付 3.已取消
+						hasFlag: true, // 是否还有更多
+						list: [],
+						loadingFlag: 'show'
+					},
+					{
+						isLoad: false, // 是否加载
+						pageNum: 0,
+						pageSize: 10,
+						status: 3, // 状态 1.已支付 2.待支付 3.已取消
+						hasFlag: true, // 是否还有更多
+						list: [],
+						loadingFlag: 'show'
+					}
+				], // 订单总列表
+			};
+		},
+		methods: {
+			// 选中
+			tabChange ({ detail: { current } }) {
+				this.selectTab = current
+				if (this.orderList[this.selectTab].isLoad) return // 判断是否初始化状态
+				this.orderList[this.selectTab].pageNum = 0
+				this.orderList[this.selectTab].list = []
+				this.orderList[this.selectTab].hasFlag = true
+				this.getOrderList(this.orderList[this.selectTab])
+			},
+			// 获取订单列表
+			async getOrderList (obj) {
+				if (!obj.hasFlag) return
+				obj.loadingFlag = 'show'
+				obj.pageNum++
+				let objClone = JSON.parse(JSON.stringify(obj))
+				delete objClone.list 
+				let res = await fetch(api.orderList, objClone)
+				obj.loadingFlag = 'hide'
+				res.rows.forEach(item => {
+					item.orderItems.forEach(orderItems => {
+						this.course_type_list.forEach(courseTypeItem => {
+							if (courseTypeItem.id === orderItems.course.courseTypeId) orderItems.course.courseTypeName = courseTypeItem.name
+						})
+					}) 
+				})
+				// obj.isLoad = true // 改为每次都加载算啦
+				obj.list = [...obj.list, ...res.rows]
+				obj.hasFlag = obj.pageNum * obj.pageSize < res.total
+			},
+			// 打开订单详情
+			handleOpenOrderDetail (id) {
+				uni.navigateTo({ url: '/pages/order-detail/order-detail?orderId=' + id })
+			},
+			// 取消订单
+			async handleCancelOrder (e, id, item) {
+				e.stopPropagation() // 阻止事件冒泡
+				let res = await fetch(api.cancelOrder, { orderId: id })
+				if (res.code) return uni.showToast({ title: res.msg, icon: 'none' })
+				uni.showToast({ title: '订单取消成功~' })
+				let index = 0
+				item.list.forEach((orderItem, orderIndex) => {
+					if (orderItem.orderId === id) index = orderIndex
+				})
+				// 删除
+				item.list.splice(index, 1)
+			} 
+		},
+		onLoad() {
+			this.swiperHeight = (uni.getSystemInfoSync().windowHeight - uni.upx2px(90)) + 'wx'
+			this.getOrderList(this.orderList[this.selectTab])
+			this.course_type_list = uni.getStorageSync('course_type_list')
+		}
+	}
+</script>
+
+<style lang="less">
+.tab-bar {
+	flex-direction: row;
+	height: 90rpx;
+	border-bottom-width: 1rpx;
+	border-bottom-color: #F0f0f0;
+}
+
+.tab-bar-item {
+	width: 187.5rpx; 
+	height: 90rpx; 
+	position: relative;
+	justify-content: center;
+	align-items: center;
+}
+
+.tab-bar-item-text {
+	font-size: 14px;
+	color: #9B9B9B;
+	text-align: center;
+	line-height: 90rpx;
+}
+
+.tab-bottom-border {
+	position: absolute;
+	width: 0rpx;
+	height: 6rpx;
+	background-color: #8987DF;
+	bottom: 0rpx; 
+	transition-property: width;
+	transition-duration: .2s;
+}
+
+.select-tab-bar-item-text {
+	color: #8987DF;
+	font-weight: bold;
+}
+
+.select-tab-bar {
+	width: 50rpx;
+	margin: 0 auto; 
+}
+
+.swiper {
+	background-color: #f7f7f7;
+}
+
+.order-list {
+	padding: 30rpx;
+}
+
+.item {
+	padding: 30rpx;
+	border-radius: 14rpx;
+	background-color: #FFFFFF;
+	margin-bottom: 30rpx;
+}
+
+.last-item {
+	margin-bottom: 0rpx;
+}
+
+.already-buy {
+	
+}
+
+.order-number {
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: #9B9B9B;
+	padding-bottom: 20rpx;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-color: #f6f6f6;
+}
+
+.order-number-main {
+	flex-direction: row;
+	align-items: center;
+}
+
+.order-number-name {
+	font-size: 14px;
+	margin-right: 30rpx;
+	color: #9B9B9B;
+}
+
+.order-number-paid {
+	color: #333333;
+	font-size: 14px;
+}
+
+.order-course-list {
+	
+}
+
+.order-course-item-header {
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30rpx;
+}
+
+.order-course-type {
+	background-color: rgba(137,135,223,0.30);
+	border-radius: 2px;
+	padding: 5rpx 14rpx;
+	font-size: 12px;
+	color: #8987DF;
+}
+
+.order-course-name {
+	margin-top: 20rpx;
+	font-size: 17px;
+	font-weight: bold;
+	color: #333333;
+}
+
+.order-course-price {
+	font-size: 14px;
+	color: #333333;
+	font-weight: bold;
+}
+
+.order-course-base-info {
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30rpx;
+	padding-bottom: 30rpx;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-color: #f6f6f6;
+}
+
+.last-order-course-base-info {
+	padding-bottom: 30rpx; 
+	border-bottom-width: 0px;
+}
+
+.teacher-avatar {
+	width: 56rpx;
+	height: 56rpx;
+	border-radius: 50%;
+	margin-right: 20rpx;
+}
+
+.teacher-name {
+	font-size: 14px;
+	color: #333333;
+}
+
+.order-course-base-info-left {
+	flex-direction: row;
+	align-items: center;
+}
+
+.order-course-base-info-level {
+	color: #8987DF;
+	font-size: 14px;
+}
+
+.order-total {
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.total-count {
+	color: #9B9B9B;
+	font-size: 14px;
+}
+
+.total-price {
+	font-size: 18px;
+	color: #D0021B;
+}
+
+.no-buy {
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-top: 30rpx;
+	border-style: solid;
+	border-top-width: 1px;
+	border-color: #f6f6f6;
+	padding-top: 30rpx;
+}
+
+.cancel-order {
+	width: 160rpx;
+	height: 60rpx;
+	border-width: 1px;
+	border-color: #f6f6f6;
+	border-radius: 30rpx;
+	justify-content: center;
+	align-items: center;
+	margin-right: 30rpx;
+}
+
+.cancel-order-text {
+	color: #9B9B9B;
+	font-size: 14px;
+}
+
+.payment {
+	width: 160rpx;
+	height: 60rpx;
+	border-width: 1px;
+	border-color: #8987DF;
+	border-radius: 30rpx;
+	justify-content: center;
+	align-items: center;
+}
+
+.payment-text {
+	color: #8987DF;
+	font-size: 14px;
+}
+
+.indicator {
+	height: 20px;
+	width: 20px;
+	color: red;
+}
+
+.bottom-loading {
+	padding: 10px 0;
+	width: 750rpx;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.bottom-loading-text {
+	color: #9B9B9B;
+	font-size: 14px;
+	margin-right: 10rpx;
+}
+
+.tip-no-more {
+	padding: 10px 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.tip-no-more-text {
+	font-size: 14px;
+	color: #9B9B9B;
+}
+</style>

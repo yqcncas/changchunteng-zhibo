@@ -1,0 +1,233 @@
+<template>
+	<div class="container">
+		
+	</div>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		components: {
+			
+		}, 
+		methods: {
+			
+		},
+		onLoad() {
+		
+		},
+		onNavigationBarButtonTap ({ index }) {
+			if (index === 0) return uni.navigateTo({ url: '/pages/choose-grade/choose-grade' })
+			if (index === 1) return uni.navigateTo({ url: '/pages/cart/cart' })
+		},
+		// 前往搜索页面
+		onNavigationBarSearchInputClicked () {
+			uni.navigateTo({ url: '/pages/search/search' }) 
+		}
+	}
+</script>
+
+<style>
+	.card-swiper {
+		height: 300rpx;
+	}
+	
+	.card-swiper-item {
+		width: 680rpx; 
+		padding-left: 35rpx;
+		padding-right: 35rpx;
+	}
+	
+	.swiper-item {
+		width: 680rpx; 
+		height: 300rpx;
+		border-radius: 6px; 
+	}
+	
+	.swiper-item-image {
+		width: 680rpx;
+		height: 300rpx;
+		border-radius: 6px; 
+	}
+	
+	.course-type {
+		/* 750 */
+		margin-top: 30rpx;
+		height: 90rpx;
+		flex-direction: row;
+	}
+	
+	.course-type-item {
+		width: 375rpx;
+		height: 90rpx; 
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+	
+	.course-type-item-text {
+		line-height: 90rpx;
+		color: #9B9B9B;
+		font-size: 14px;
+	}
+	
+	.course-type-item-active {
+		color: #333333;
+		font-size: 17px;
+		border-color: #8987DF;
+	}
+	
+	.course-type-item-bottom {
+		position: absolute;
+		width: 0rpx;
+		height: 6rpx;
+		background-color: #8987DF;
+		bottom: 0rpx; 
+		transition-property: width;
+		transition-duration: .2s;
+	}
+	
+	.course-type-item-bottom_active {
+		width: 50rpx;
+	}
+	
+	.course-list {
+		padding: 30rpx;
+		padding-bottom: 0;
+		background-color: #f7f7f7;
+	}
+	
+	.course-item {
+		padding: 30rpx;
+		background-color: #FFF;
+		border-radius: 7px;
+		position: relative;
+		margin-bottom: 30rpx;
+	}
+	
+	.course-name {
+		position: absolute;
+		top: 30rpx;
+		left: -8rpx; 
+		width: 126rpx;
+		height: 60rpx;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.course-name-bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 126rpx;
+		height: 60rpx;
+	}
+	
+	.course-name-text {
+		font-size: 14px;
+		color: #FFFFFF;
+	}
+	
+	.price {
+		text-align: right; 
+	}
+	
+	.price-text {
+		text-align: right;
+		font-size: 22px;
+		color: #D0021B;
+	}
+	
+	.course-title {
+		margin-top: 20rpx;
+		font-size: 17px;
+		font-weight: bold; 
+		color: #333333;
+	}
+	
+	.course-time {
+		font-size: 14px;
+		color: #9B9B9B;
+		margin-top: 10rpx;
+	}
+	
+	.course-level {
+		margin-top: 16rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.course-level-title {
+		font-size: 14px;
+		color: #9B9B9B;
+		margin-right: 20rpx;
+	}
+	
+	.course-level-star {
+		width: 24rpx;
+		height: 24rpx;
+		margin-right: 6rpx;
+	}
+	
+	.teacher {
+		margin-top: 30rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.teacher-left {
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.teacher-avatar {
+		width: 56rpx;
+		height: 56rpx;
+		border-radius: 50%;
+		margin-right: 20rpx;
+	}
+	
+	.teacher-name {
+		font-size: 14px;
+	}
+	
+	.course-collection {
+		color: #8987DF;
+		font-size: 14px;
+	}
+	
+	.indicator {
+	    height: 20px;
+	    width: 20px;
+	    color: red;
+	}
+	
+	.bottom-loading {
+		padding: 10px 0;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.bottom-loading-text {
+		color: #9B9B9B;
+		font-size: 14px;
+		margin-right: 10rpx;
+	}
+	
+	.tip-no-more {
+		padding: 10px 0;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.tip-no-more-text {
+		font-size: 14px;
+		color: #9B9B9B;
+	}
+</style>
